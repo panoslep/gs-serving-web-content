@@ -46,8 +46,13 @@ public class GreetingController {
 	}
 
 	@GetMapping("/party")
-	public String party(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
+	public String party(@RequestParam(name="name", required=true, defaultValue="Ryan") String name, Model model) {
 		model.addAttribute("name", name);
+        String[] continents = {
+                "Africa", "Antarctica", "Asia", "Australia",
+                "Europe", "North America", "South America"
+        };
+        model.addAttribute("continents", continents);
 		return "party";
 	}
 

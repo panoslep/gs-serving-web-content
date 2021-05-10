@@ -1,0 +1,14 @@
+#panos {
+    color: red;
+    size:20px;
+}
+
+body {
+  color: blue;
+  max-width:70%;
+  margin-left:20% !important;
+  margin-right:20% !important;
+}
+h1 {
+  color: green;
+}
