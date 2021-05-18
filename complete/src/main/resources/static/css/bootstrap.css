@@ -10826,4 +10826,9 @@ textarea.form-control-lg {
   }
 }
 
+.wrapperTest {
+    position: absolute;
+    top: 50%;
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

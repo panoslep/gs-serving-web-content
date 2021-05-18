@@ -56,5 +56,22 @@ public class GreetingController {
 		return "party";
 	}
 
+	@GetMapping("/CoffeeLoversUnited")
+	public String CoffeeLoversUnited(@RequestParam(name="name", required=true, defaultValue="Ryan") String name, Model model) {
+		model.addAttribute("name", name);
+		String[] continents = {
+				"Africa", "Antarctica", "Asia", "Australia",
+				"Europe", "North America", "South America"
+		};
+		model.addAttribute("continents", continents);
+		return "CoffeeLoversUnited";
+	}
+
+	@GetMapping("/carousel")
+	public String carousel() {
+
+		return "carousel";
+	}
+
 
 }
