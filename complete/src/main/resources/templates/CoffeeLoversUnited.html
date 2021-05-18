@@ -4,13 +4,13 @@
 <head>
     <!--The following lines are for page's favicon -->
     <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="icon" sizes="16x16 32x32 64x64" href="/static/images/favicon.ico">
-    <link rel="icon" type="image/png" sizes="196x196" href="/resources/static/images/favicon-192.png">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="196x196" href="/favicon-192.png">
     <link rel="icon" type="image/png" sizes="160x160" href="/resources/static/images/favicon-160.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/resources/static/images/favicon-96.png">
-    <link rel="icon" type="image/png" sizes="64x64" href="/resources/static/images/favicon-64.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/resources/static/images/favicon-32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/resources/static/images/favicon-16.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
     <link rel="apple-touch-icon" href="/static/images/favicon-57.png">
     <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="/static/images/favicon-144.png">
@@ -18,52 +18,21 @@
 
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <style>
 
-        .fa {
-          padding: 20px;
-          font-size: 30px;
-          width: 65px;
-          text-align: center;
-          text-decoration: none;
-          margin: 5px 2px;
-        }
-
-        .fa:hover {
-            opacity: 0.7;
-        }
-
-        .fa-facebook {
-          background: #3B5998;
-          color: white;
-        }
-
-        .fa-twitter {
-          background: #55ACEE;
-          color: white;
-        }
-
-        .fa-linkedin {
-          background: #007bb5;
-          color: white;
-        }
-
-        .fa-instagram {
-          background: #125688;
-          color: white;
-        }
-
-        .fa-pinterest {
-          background: #cb2027;
-          color: white;
-        }
-
         h1 {
-          background-color: #478559;
+          background-color: #f1f1f1;
         }
 
         #mainBody {
-          background-color: #478559 ;
+          background-color: #f1f1f1 ;
         }
 
         div {
@@ -77,25 +46,37 @@
     <title>Coffee Lovers United</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <!--
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    -->
 
     <body>
 
-        <!-- social media buttons -->
-        <a href="#" class="fa fa-facebook"></a>
-        <a href="#" class="fa fa-twitter"></a>
-        <a href="#" class="fa fa-linkedin"></a>
-        <a href="#" class="fa fa-instagram"></a>
-        <a href="#" class="fa fa-pinterest"></a>
+        <div id="tab-list" class="container mt-3">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="CoffeeLoversUnited">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="carousel">carousel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="party">party</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">intro</a>
+                </li>
+            </ul>
+        </div>
 
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
+            </ol>.
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="d-block w-100" src="https://placeimg.com/540/250/animals" alt="People">
@@ -105,16 +86,16 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="https://placeimg.com/540/250/arch" alt="Events">
+                    <img class="d-block w-100" src="https://placeimg.com/540/250/arch" alt="News">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Events</h5>
-                        <p>Check the calendar for our next event.</p>
+                        <h5>News</h5>
+                        <p>Check the calendar for our next events.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="https://placeimg.com/540/250/nature" alt="Ideas">
+                    <img class="d-block w-100" src="https://placeimg.com/540/250/nature" alt="Inspiration">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Ideas</h5>
+                        <h5>Inspiration</h5>
                         <p>Check out ideas for the perfect cupper.</p>
                     </div>
 
@@ -147,6 +128,55 @@
             <p> This is a test at the moment. </p>
         </div>
 
+        <!-- social media buttons -->
+        <style>
+
+        .fa {
+          padding: 10px;
+          font-size: 15px;
+          width: 32px;
+          text-align: center;
+          text-decoration: none;
+          margin: 3px 1px;
+        }
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+
+        .fa-facebook {
+          background: #3B5998;
+          color: white;
+        }
+
+        .fa-twitter {
+          background: #55ACEE;
+          color: white;
+        }
+
+        .fa-linkedin {
+          background: #007bb5;
+          color: white;
+        }
+
+        .fa-instagram {
+          background: #125688;
+          color: white;
+        }
+
+        .fa-pinterest {
+          background: #cb2027;
+          color: white;
+        }
+
+    </style>
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-linkedin"></a>
+        <a href="#" class="fa fa-instagram"></a>
+        <a href="#" class="fa fa-pinterest"></a>
+
 
     </body>
 </html>
+
