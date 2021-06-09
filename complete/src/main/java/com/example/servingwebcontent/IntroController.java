@@ -3,7 +3,9 @@ package com.example.servingwebcontent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class IntroController {
@@ -12,11 +14,25 @@ public class IntroController {
     IntroService introService;
 
     @RequestMapping("/intro")
-    public String CoffeeLovers(Model model){
-        model.addAttribute("news", coffeeService.getRandomHeadline());
-        model.addAttribute("people", coffeeService.getPeople());
-        model.addAttribute("image_ppl", coffeeService.getImageUrl());
-        return "intro";
+    public String introPage(@RequestParam(value="value", required = true, defaultValue = "1") String value,
+                            @RequestParam(name = "day",  required= true, defaultValue = "null") String day,
+                            Model model){
+       // model.addAttribute("day", day);
+        model.addAttribute("value", value);
+        int index = Integer.parseInt(value);
+       // if (day == null) {
+       //     model.addAttribute("day", introService.getDay());
+       // }
+        model.addAttribute("day", introService.getDay());
+        model.addAttribute("greeting", introService.getHeadlineGreeting());
+        model.addAttribute("hour", introService.getHour());
+        model.addAttribute("minute", introService.getMinute());
+        model.addAttribute("title", introService.getTitle(index));
+        model.addAttribute("story", introService.getStory(index));
+        model.addAttribute("time", introService.getTimeString());
+        model.addAttribute("stories", introService.getStories());
+
+        return "introPage";
     }
 }
 

@@ -8,6 +8,24 @@
 <body>
     <p th:text="'Hello, ' + ${name} + '!'" />
     <p id="panos" th:text="'The weather is ' + ${weather} + ' ' + ${emotion}" />
+
+    <div id="tab-list" class="container mt-3">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="coffee">coffee</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="greeting">greeting</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="intro">intro</a>
+            </li>
+        </ul>
+    </div>
+
 </body>
 
 

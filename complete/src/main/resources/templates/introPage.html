@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Intro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+  <div id="tab-list" class="container mt-3">
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" href="home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="coffee">coffee</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="greeting">greeting</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="intro">intro</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="jumbotron text-center">
+    <h1 th:text="${greeting}" > </h1>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <h3>Time</h3>
+        <p>Sometimes I lose track of time, especially when I do coding.</p>
+        <p>The time now is: </p>
+        <p th:text="${time}"> </p>
+
+      </div>
+
+      <!--2nd Column -->
+      <div class="col-sm-4">
+        <h3 th:text="${title}"></h3>
+        <p th:text="${story}"></p>
+
+        <!--Selection Button -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+            Select Story
+          </button>
+          <ul class="dropdown-menu">
+            <li th:each="story: ${stories}">
+              <a class="dropdown-item" th:href="${story.link}" th:text="${story.title}"> </a> </li>
+
+            <!--
+            <li><a class="dropdown-item" href="/intro?value=0"> story 1 </a></li>
+            <li><a class="dropdown-item" href="/intro?value=1"> story 2 </a></li>
+            <li><a class="dropdown-item" href="/intro?value=2"> story 3 </a></li>
+            <li><a class="dropdown-item" href="/intro?value=3"> story 4 </a></li>
+            <li><a class="dropdown-item" href="/intro?value=4"> story 5 </a></li>
+            <li><a class="dropdown-item" href="/intro?value=5"> story 6 </a></li>
+            -->
+
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <h3>Photo of the Day</h3>
+        <p th:text="${day}"></p>
+        <p>All day today</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
