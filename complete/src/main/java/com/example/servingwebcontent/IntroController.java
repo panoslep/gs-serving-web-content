@@ -17,12 +17,9 @@ public class IntroController {
     public String introPage(@RequestParam(value="value", required = true, defaultValue = "1") String value,
                             @RequestParam(name = "day",  required= true, defaultValue = "null") String day,
                             Model model){
-       // model.addAttribute("day", day);
         model.addAttribute("value", value);
         int index = Integer.parseInt(value);
-       // if (day == null) {
-       //     model.addAttribute("day", introService.getDay());
-       // }
+
         model.addAttribute("day", introService.getDay());
         model.addAttribute("greeting", introService.getHeadlineGreeting());
         model.addAttribute("hour", introService.getHour());
