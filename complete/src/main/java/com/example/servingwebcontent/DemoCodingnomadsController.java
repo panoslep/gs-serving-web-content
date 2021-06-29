@@ -1,12 +1,10 @@
 package com.example.servingwebcontent;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.Arrays;
 
 @RestController
 public class DemoCodingnomadsController {
@@ -14,22 +12,53 @@ public class DemoCodingnomadsController {
     @Autowired
     RestTemplate restTemplate;
 
+    //get user 3
     @GetMapping("/users/3")
-    public DemoCodingnomadsUsers getCodinomadsUser() {
-        DemoCodingnomadsUsers user = restTemplate.getForObject("http://demo.codingnomads.co:8080/tasks_api/users/3", DemoCodingnomadsUsers, Object);
-        //return user;
+    public DemoCodingnomadsUser getCodinomadsUser3() {
+        DemoCodingnomadsUser user3Response = restTemplate.getForObject("http://demo.codingnomads.co:8080/tasks_api/users/3", DemoCodingnomadsUser.class);
+        return user3Response;
+    }
 
-        //faking web browser request
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        headers.add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.99 Safari/537.36");
-        HttpEntity<String> entity = new HttpEntity<String>("parameters", headers);
-        //ResponseEntity<String> response = restTemplate.exchange("http://demo.codingnomads.co:8080/tasks_api/users/3",
-        //        HttpMethod.GET,entity,DemoCodingnomadsUsers.class);
-        ResponseEntity<String> response = restTemplate.getForEntity("http://demo.codingnomads.co:8080/tasks_api/users/3", String.class);
+//    // get all users
+//   @GetMapping("/users")
+//    public DemoCodingnomadsUsers getCodinomadsUser() {
+//        DemoCodingnomadsUsers usersResponse = restTemplate.getForObject("http://demo.codingnomads.co:8080/tasks_api/users", DemoCodingnomadsUsers.class);
+//        return usersResponse;
+//    }
 
-        return response.getBody();
+
+
+    @GetMapping("/users/{id}")
+    public DemoCodingnomadsUser getCodinomadsUser(@PathVariable(name="id") int id) { //no model involved
+        String url =  "http://demo.codingnomads.co:8080/tasks_api/users/" + id;
+
+        DemoCodingnomadsUser usersResponse = restTemplate.getForObject(url, DemoCodingnomadsUser.class);
+        return usersResponse;
+    }
+
+    //this should be in task controller class
+    @GetMapping("/tasks/{id}")
+    public DemoCodingnomadsUser getCodinomadsTask(@PathVariable(name="id") int id) { //no model involved
+        String url =  "http://demo.codingnomads.co:8080/tasks_api/tasks/" + id;
+
+        DemoCodingnomadsUser tasksResponse = restTemplate.getForObject(url, DemoCodingnomadsUser.class);
+        return tasksResponse;
+    }
+
+    @PostMapping("/users")
+    public DemoCodingnomadsUser postCodingnomadsUser(@RequestBody DemoCodingnomadsUser user) {
+        String url =  "http://demo.codingnomads.co:8080/tasks_api/users/";
+        //use getForEntity() to access the Location header instead of getForLocation()
+        CodingnomadsResponse<DemoCodingnomadsUser> postObject = restTemplate.postForObject(url, user, CodingnomadsResponse.class);
+
+        //
+        ObjectMapper mapper = new ObjectMapper();
+        DemoCodingnomadsUser myUser = mapper.convertValue(
+                postObject.getData(),
+                new TypeReference<DemoCodingnomadsUser>(){}
+        );
+
+        return myUser;
     }
 }
-
 
