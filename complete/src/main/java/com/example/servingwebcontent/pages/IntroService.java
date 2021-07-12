@@ -1,4 +1,4 @@
-package com.example.servingwebcontent;
+package com.example.servingwebcontent.pages;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;

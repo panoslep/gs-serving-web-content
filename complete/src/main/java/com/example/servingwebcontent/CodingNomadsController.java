@@ -18,13 +18,16 @@ public class CodingNomadsController {
 //        CodingNomadsUser allUsersResponse = restTemplate.getForObject("http://demo.codingnomads.co:8080/tasks_api/users", CodingNomadsUser.class);
 //        return allUsersResponse;
 //    }
+//
+//    @GetMapping("/tasks")
+//    public CodingNomadsTask codingNomadsTask() {
+//        String url = "http://demo.codingnomads.co:8080/tasks_api/users/";
+//        CodingNomadsTask allTasksResponse = restTemplate.getForObject(url, CodingNomadsTask.class);
+//        return allTasksResponse;
+//    }
 
-    @GetMapping("/tasks")
-    public CodingNomadsTask codingNomadsTask() {
-        String url = "http://demo.codingnomads.co:8080/tasks_api/users/";
-        CodingNomadsTask allTasksResponse = restTemplate.getForObject(url, CodingNomadsTask.class);
-        return allTasksResponse;
-    }
+
+
 
     @GetMapping("/users/{id}")
     public CodingNomadsUser getCodingNomadsUser(@PathVariable(name="id") int id) {
@@ -36,12 +39,14 @@ public class CodingNomadsController {
 
     //this should be in task controller class
     @GetMapping("/tasks/{id}")
-    public CodingNomadsUser getCodingNomadsTask(@PathVariable(name="id") int id) {
+    public CodingNomadsTask getCodingNomadsTask(@PathVariable(name="id") int id) {
         String url =  "http://demo.codingnomads.co:8080/tasks_api/tasks/" + id;
 
-        CodingNomadsUser tasksResponse = restTemplate.getForObject(url, CodingNomadsUser.class);
-        return tasksResponse;
+        CodingNomadsTask taskResponse = restTemplate.getForObject(url, CodingNomadsTask.class);
+        return taskResponse;
     }
+
+
 
     @PostMapping("/users")
     public CodingNomadsUser postCodingNomadsUser(@RequestBody CodingNomadsUser user) {
@@ -49,7 +54,7 @@ public class CodingNomadsController {
         //use getForEntity() to access the Location header instead of getForLocation()
         CodingNomadsResponse<CodingNomadsUser> postObject = restTemplate.postForObject(url, user, CodingNomadsResponse.class);
 
-        //
+
         ObjectMapper mapper = new ObjectMapper();
         CodingNomadsUser myUser = mapper.convertValue(
                 postObject.getData(),
@@ -60,12 +65,11 @@ public class CodingNomadsController {
     }
 
     @PostMapping("/tasks")
-    public CodingNomadsTask postCodingnomadsTask(@RequestBody CodingNomadsTask task) {
+    public CodingNomadsTask postCodingNomadsTask(@RequestBody CodingNomadsTask task) {
         String url =  "http://demo.codingnomads.co:8080/tasks_api/tasks/";
 
         CodingNomadsResponse<CodingNomadsTask> postObject = restTemplate.postForObject(url, task, CodingNomadsResponse.class);
 
-        //
         ObjectMapper mapper = new ObjectMapper();
         CodingNomadsTask myTask = mapper.convertValue(postObject.getData(),
                 new TypeReference<CodingNomadsTask>(){}
@@ -73,5 +77,20 @@ public class CodingNomadsController {
 
         return myTask;
     }
+
+    @DeleteMapping("/users/{id}")
+    public void deleteCodingNomadsUser(@PathVariable(name="id") int id) {
+        String url = "http://demo.codingnomads.co:8080/tasks_api/users/" + id;
+
+        restTemplate.delete(url, CodingNomadsUser.class);
+    }
+
+    @DeleteMapping("/tasks/{id}")
+    public void deleteCodingNomadsTask(@PathVariable(name="id") int id) {
+        String url = "http://demo.codingnomads.co:8080/tasks_api/tasks/" + id;
+
+        restTemplate.delete(url, CodingNomadsTask.class);
+    }
+
 }
 

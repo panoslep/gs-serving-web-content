@@ -1,4 +1,4 @@
-package com.example.servingwebcontent;
+package com.example.servingwebcontent.pages;
 
 import com.sun.xml.internal.fastinfoset.util.StringArray;
 import org.springframework.stereotype.Service;

@@ -1,11 +1,10 @@
-package com.example.servingwebcontent;
+package com.example.servingwebcontent.KanyeAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
 import java.util.Arrays;
 
 @RestController

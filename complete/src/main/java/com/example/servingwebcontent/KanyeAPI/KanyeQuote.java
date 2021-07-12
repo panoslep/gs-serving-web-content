@@ -1,4 +1,4 @@
-package com.example.servingwebcontent;
+package com.example.servingwebcontent.KanyeAPI;
 import lombok.Data;
 
 @Data
