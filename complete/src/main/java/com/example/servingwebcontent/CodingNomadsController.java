@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+
 @RestController
 public class CodingNomadsController {
 
@@ -13,12 +15,33 @@ public class CodingNomadsController {
     RestTemplate restTemplate;
 
 //    //get all users
-//    @GetMapping("/users")
-//    public CodingNomadsUser getCodingNomadsUsers() {
-//        CodingNomadsUser allUsersResponse = restTemplate.getForObject("http://demo.codingnomads.co:8080/tasks_api/users", CodingNomadsUser.class);
-//        return allUsersResponse;
-//    }
-//
+    @GetMapping("/users")
+    public ArrayList<CodingNomadsUser> getCodingNomadsUsers() {
+        CodingNomadsResponse<ArrayList<CodingNomadsUser>> allUsersResponse = restTemplate.getForObject("http://demo.codingnomads.co:8080/tasks_api/users", CodingNomadsResponse.class);
+        return allUsersResponse.data;
+    }
+
+    @GetMapping("/users/{id}")
+    public CodingNomadsUser getCodingNomadsUser(@PathVariable(name="id") int id) {
+        String url =  "http://demo.codingnomads.co:8080/tasks_api/users/" + id;
+
+        CodingNomadsResponse<CodingNomadsUser> usersResponse = restTemplate.getForObject(url, CodingNomadsResponse.class);
+
+        // Because the coingnomadsresponse is generic we need to force the data mapping
+        ObjectMapper mapper = new ObjectMapper();
+        CodingNomadsUser pojo = mapper.convertValue(usersResponse.data, CodingNomadsUser.class);
+
+        // or:
+       // List<POJO> pojos = mapper.convertValue(listOfObjects, new TypeReference<List<POJO>>() { });
+
+        return pojo;
+    }
+
+
+
+
+
+
 //    @GetMapping("/tasks")
 //    public CodingNomadsTask codingNomadsTask() {
 //        String url = "http://demo.codingnomads.co:8080/tasks_api/users/";
@@ -29,13 +52,7 @@ public class CodingNomadsController {
 
 
 
-    @GetMapping("/users/{id}")
-    public CodingNomadsUser getCodingNomadsUser(@PathVariable(name="id") int id) {
-        String url =  "http://demo.codingnomads.co:8080/tasks_api/users/" + id;
 
-        CodingNomadsUser usersResponse = restTemplate.getForObject(url, CodingNomadsUser.class);
-        return usersResponse;
-    }
 
     //this should be in task controller class
     @GetMapping("/tasks/{id}")
