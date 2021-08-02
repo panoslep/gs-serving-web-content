@@ -2,7 +2,7 @@ package com.example.servingwebcontent.NYtimes;
 
 public class Multimedia {
 
-    public String rank;
+    public int rank;
     public String subtype;
     public String caption;
     public String credit;

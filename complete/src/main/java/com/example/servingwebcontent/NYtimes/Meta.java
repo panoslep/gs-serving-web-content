@@ -8,8 +8,3 @@ public class Meta {
 
 }
 
-
-
-//"hits": 189757,
-//        "offset": 0,
-//        "time": 32
